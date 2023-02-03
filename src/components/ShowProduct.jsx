@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../index.css";
 import ChangeStatus from "./ChangeStatus";
 import Delete from "./Delete";
-const ShowProduct = ({ product, deleteElt, id }) => {
+const ShowProduct = ({ product, deleteElt, id, products }) => {
   const [isActive, setIsActive] = useState(product.active);
   let articleContainer;
 
@@ -12,14 +12,13 @@ const ShowProduct = ({ product, deleteElt, id }) => {
     articleContainer = "showProductContainer yellow";
   }
 
-  const changeStatus = () => {
-    if (isActive == true) {
-      setIsActive(false);
-    }
-    if (isActive == false) {
-      setIsActive(true);
-    }
-    console.log(product);
+  const changeStatus = (id) => {
+    products.map((product) => {
+      if (product.id === id) {
+        setIsActive({ ...product, active: !isActive });
+      }
+      return product;
+    });
   };
 
   return (

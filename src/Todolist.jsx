@@ -92,6 +92,7 @@ const Todolist = () => {
                   product={product}
                   id={product.id}
                   deleteElt={deleteProduct}
+                  products={products}
                 />
               </article>
             );
